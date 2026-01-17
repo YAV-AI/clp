@@ -1,0 +1,28 @@
+{
+  "name": "contract-language-protocol",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Monorepo for the Contract Language Protocol (CLP) — authority-first contracts for AI-governed execution",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "dev": "pnpm -r dev",
+    "lint": "pnpm -r lint",
+    "clean": "rm -rf node_modules packages/**/dist examples/**/dist",
+    "release": "pnpm -r publish --access public",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.3.1",
+    "@commitlint/config-conventional": "^20.3.1",
+    "husky": "^9.1.7",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@10.14.0"
+}

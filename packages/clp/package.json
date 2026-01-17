@@ -1,0 +1,29 @@
+{
+  "name": "@yav-ai/clp",
+  "version": "0.0.1",
+  "description": "Authority-first runtime for executing AI-governed contracts",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "pnpm build",
+    "test": "echo \"no tests yet\"",
+    "prepublishOnly": "pnpm build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
