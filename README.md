@@ -109,10 +109,6 @@ Hard, non-negotiable prohibitions.
 
 Optional, untrusted suggestions.
 
-### Evaluations
-
-Deterministic checks that may block execution.
-
 ---
 
 ## Execution lifecycle
@@ -120,7 +116,7 @@ Deterministic checks that may block execution.
 1. An intent is dispatched (complete or incomplete)
 2. AI may optionally propose missing values
 3. Proposals must be explicitly accepted
-4. Guards and evaluations are enforced
+4. Guards are enforced
 5. A transition applies state changes atomically
 6. All steps are logged
 
