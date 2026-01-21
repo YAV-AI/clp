@@ -17,7 +17,7 @@ export class Engine {
 
   constructor(
     contract: Contract,
-    aiProvider?: (intent: Intent) => Promise<Proposal>
+    aiProvider?: (intent: Intent) => Promise<Proposal>,
   ) {
     this.contract = contract;
     this.aiProvider = aiProvider;
@@ -87,7 +87,7 @@ export class Engine {
     const intentDef = this.contract.intents[intentName];
     this.currentIntent.complete = this.isComplete(
       this.currentIntent.payload,
-      intentDef.inputs
+      intentDef.inputs,
     );
     // Log acceptance
     this.log.push({
@@ -138,13 +138,6 @@ export class Engine {
       }
     }
 
-    // Evaluations
-    for (const evaluation of this.contract.evaluations) {
-      if (!evaluation.validate(context)) {
-        throw new Error(`Evaluation ${evaluation.name} failed`);
-      }
-    }
-
     // Find transition
     let transition: Transition | undefined;
     let transitionNameUsed: string | undefined;
@@ -160,7 +153,7 @@ export class Engine {
       }
       if (matchingTransitions.length !== 1) {
         throw new Error(
-          `Expected exactly one matching transition, found ${matchingTransitions.length}`
+          `Expected exactly one matching transition, found ${matchingTransitions.length}`,
         );
       }
       transition = this.contract.transitions[matchingTransitions[0]];
@@ -230,7 +223,7 @@ export class Engine {
 
   private createIntent(
     intentName: string,
-    payload: Record<string, any>
+    payload: Record<string, any>,
   ): Intent {
     const intentDef = this.contract.intents[intentName];
     if (!intentDef) {
@@ -245,7 +238,7 @@ export class Engine {
 
   private isComplete(
     payload: Record<string, any>,
-    inputs: Record<string, string>
+    inputs: Record<string, string>,
   ): boolean {
     for (const [key, type] of Object.entries(inputs)) {
       if (type.endsWith("?")) continue;

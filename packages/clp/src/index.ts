@@ -7,7 +7,6 @@ export * from "./intent";
 export * from "./state";
 export * from "./transition";
 export * from "./guard";
-export * from "./evaluation";
 
 // =========================
 // ai boundary
