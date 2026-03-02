@@ -13,6 +13,7 @@ export const classifierContract = createContract({
     classifyText: {
       inputs: {
         text: "string",
+        category: "string?",
       },
     },
   },
