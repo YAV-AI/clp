@@ -17,7 +17,9 @@
   "scripts": {
     "build": "tsc",
     "prepare": "pnpm build",
-    "test": "echo \"no tests yet\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "echo \"no lint configured\"",
     "prepublishOnly": "pnpm build"
   },
   "publishConfig": {
