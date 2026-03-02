@@ -1,10 +1,64 @@
 # Contract Language Protocol (CLP)
 
+[![npm version](https://img.shields.io/npm/v/@yav-ai/clp.svg)](https://www.npmjs.com/package/@yav-ai/clp)
+[![Test Status](https://github.com/yav-ai/clp/actions/workflows/test.yml/badge.svg)](https://github.com/yav-ai/clp/actions)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/yav-ai/clp)
+
 The **Contract Language Protocol (CLP)** is an authority-first execution protocol for AI-assisted software systems.
 
 CLP defines a deterministic boundary between **intelligence** (AI models, agents, reasoning systems) and **authority** (state changes, side effects, irreversible actions). Its purpose is to ensure that probabilistic systems can _assist_ software — without ever silently becoming decision-makers.
 
 CLP is designed to be used **alongside existing AI frameworks** such as OpenAI SDKs or LangChain, not as a replacement.
+
+---
+
+## Quick Start
+
+```bash
+npm install @yav-ai/clp
+```
+
+```typescript
+import { createContract, createRuntime } from "@yav-ai/clp";
+
+// Define a contract
+const counterContract = createContract({
+  intents: {
+    increment: {
+      inputs: { amount: "number?" },
+    },
+  },
+  state: { count: "number" },
+  guards: [
+    {
+      name: "no_negative",
+      deny: (ctx) =>
+        ctx.intent.payload.amount != null && ctx.intent.payload.amount < 0,
+    },
+  ],
+  transitions: {
+    apply: {
+      when: (ctx) => ctx.intent.complete,
+      effects: (ctx) => ({
+        count: (ctx.state.count ?? 0) + (ctx.intent.payload.amount ?? 1),
+      }),
+    },
+  },
+});
+
+// Create runtime with optional AI provider
+const aiProvider = async (intent) => ({ amount: 1 });
+const runtime = createRuntime(counterContract, aiProvider);
+
+// Use the runtime
+runtime.dispatch("increment", { amount: 5 });
+await runtime.propose("increment");
+runtime.acceptProposal("increment");
+runtime.commit("apply");
+
+console.log(runtime.getState("count")); // 5
+console.log(runtime.getLog()); // Full audit trail
+```
 
 ---
 
@@ -38,8 +92,8 @@ It ensures that **no AI output may cause a state change unless it passes an expl
 This invariant is:
 
 - enforced by the runtime (not prompts or policies),
-- non-bypassable by AI or application code,
-- observable through a complete audit log.
+- non-bypassable by AI or application code a complete audit log,
+- observable through.
 
 If this invariant is violated, the system is considered incorrect.
 
@@ -132,3 +186,69 @@ CLP supports multiple usage patterns:
 
 CLP never depends on any AI framework.  
 Integrations are optional and additive.
+
+---
+
+## Examples
+
+| Example                                    | Description                     |
+| ------------------------------------------ | ------------------------------- |
+| [`examples/counter/`](examples/counter/)   | Simple counter with AI proposal |
+| [`examples/flight/`](examples/flight/)     | Flight booking with guards      |
+| [`examples/reminder/`](examples/reminder/) | Reminder with validation        |
+
+---
+
+## API Reference
+
+### `createContract(config)`
+
+Creates a contract definition.
+
+```typescript
+const contract = createContract({
+  intents: { ... },
+  state: { ... },
+  guards: [ ... ],
+  transitions: { ... },
+});
+```
+
+### `createRuntime(contract, aiProvider?)`
+
+Creates a runtime instance.
+
+```typescript
+const runtime = createRuntime(contract, async (intent) => {
+  // Return AI proposal
+  return { amount: 5 };
+});
+```
+
+### Runtime Methods
+
+- `dispatch(intentName, payload)` - Dispatch an intent
+- `propose(intentName)` - Request AI proposal
+- `acceptProposal(intentName)` - Accept staged proposal
+- `commit(transitionName?)` - Execute transition
+- `getState(key)` - Get state value
+- `subscribe(key, callback)` - Subscribe to state changes
+- `getLog()` - Get audit log
+
+---
+
+## Documentation
+
+- [ROADMAP](./ROADMAP.md) - Future plans and feature ideas
+- [CONTRIBUTING](./CONTRIBUTING.md) - How to contribute
+- [CODE_OF_CONDUCT](./CODE_OF_CONDUCT.md) - Community guidelines
+
+---
+
+## License
+
+MIT License - see [LICENCE.md](./LICENCE.md)
+
+---
+
+&copy; 2026 YAV.AI PTY LTD
