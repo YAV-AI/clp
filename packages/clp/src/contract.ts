@@ -10,10 +10,8 @@ export interface Contract {
   transitions: Record<string, Transition>;
 }
 
-export class Contract {
-  static create(config: Contract): Contract {
-    return {
-      ...config,
-    };
-  }
+export function createContract(config: Contract): Contract {
+  return {
+    ...config,
+  };
 }

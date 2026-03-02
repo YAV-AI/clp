@@ -3,6 +3,7 @@
 // =========================
 
 export * from "./contract";
+export { createContract } from "./contract";
 export * from "./intent";
 export * from "./state";
 export * from "./transition";

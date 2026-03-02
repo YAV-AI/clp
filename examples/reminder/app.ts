@@ -1,9 +1,15 @@
 import { createRuntime, Intent, Proposal } from "../../packages/clp";
 import { reminderContract } from "./contract";
 
+const getFutureDate = (daysAhead: number = 7): string => {
+  const date = new Date();
+  date.setDate(date.getDate() + daysAhead);
+  return date.toISOString().split("T")[0];
+};
+
 const mockAI = async (intent: Intent): Promise<Proposal> => {
   if (intent.name === "createReminder" && !intent.payload.date) {
-    return { date: "2023-12-01" };
+    return { date: getFutureDate(7) };
   }
   return {};
 };

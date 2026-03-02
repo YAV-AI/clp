@@ -1,6 +1,6 @@
-import { Contract } from "../../packages/clp";
+import { createContract } from "../../packages/clp";
 
-export const flightContract = Contract.create({
+export const flightContract = createContract({
   intents: {
     searchFlights: {
       inputs: {
@@ -45,7 +45,7 @@ export const flightContract = Contract.create({
         if (context.intent.name === "selectFlight") {
           const flights = context.state.flights || [];
           return !flights.some(
-            (f: any) => f.id === context.intent.payload.flightId
+            (f: any) => f.id === context.intent.payload.flightId,
           );
         }
         return false;

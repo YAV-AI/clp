@@ -1,6 +1,6 @@
-import { Contract } from "../../packages/clp";
+import { createContract } from "../../packages/clp";
 
-export const counterContract = Contract.create({
+export const counterContract = createContract({
   intents: {
     increment: {
       inputs: {

@@ -1,6 +1,6 @@
-import { Contract } from "../../packages/clp";
+import { createContract } from "../../packages/clp";
 
-export const reminderContract = Contract.create({
+export const reminderContract = createContract({
   intents: {
     createReminder: {
       inputs: {
