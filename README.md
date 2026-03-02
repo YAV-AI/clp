@@ -191,11 +191,12 @@ Integrations are optional and additive.
 
 ## Examples
 
-| Example                                    | Description                     |
-| ------------------------------------------ | ------------------------------- |
-| [`examples/counter/`](examples/counter/)   | Simple counter with AI proposal |
-| [`examples/flight/`](examples/flight/)     | Flight booking with guards      |
-| [`examples/reminder/`](examples/reminder/) | Reminder with validation        |
+| Example                                        | Description                     |
+| ---------------------------------------------- | ------------------------------- |
+| [`examples/counter/`](examples/counter/)       | Simple counter with AI proposal |
+| [`examples/flight/`](examples/flight/)         | Flight booking with guards      |
+| [`examples/reminder/`](examples/reminder/)     | Reminder with validation        |
+| [`examples/classifier/`](examples/classifier/) | Classifier with category check  |
 
 ---
 
