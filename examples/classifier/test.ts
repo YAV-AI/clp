@@ -1,4 +1,4 @@
-import { createRuntime, Intent, Proposal } from "../../packages/clp";
+import { createRuntime, Intent, Proposal } from "@yav-ai/clp";
 import { classifierContract } from "./contract";
 
 const ALLOWED_CATEGORIES = [

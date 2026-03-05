@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@yav-ai/clp": "workspace:*"
+  }
+}

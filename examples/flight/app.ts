@@ -1,4 +1,4 @@
-import { createRuntime, Intent, Proposal } from "../../packages/clp";
+import { createRuntime, Intent, Proposal } from "@yav-ai/clp";
 import { flightContract } from "./contract";
 
 const getFutureDate = (daysAhead: number = 30): string => {

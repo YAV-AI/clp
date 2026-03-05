@@ -1,4 +1,4 @@
-import { createRuntime, Intent, Proposal } from "../../packages/clp";
+import { createRuntime, Intent, Proposal } from "@yav-ai/clp";
 import { counterContract } from "./contract";
 
 const counterAI = async (intent: Intent): Promise<Proposal> => {

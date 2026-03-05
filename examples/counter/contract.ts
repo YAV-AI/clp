@@ -1,4 +1,4 @@
-import { createContract } from "../../packages/clp";
+import { createContract } from "@yav-ai/clp";
 
 export const counterContract = createContract({
   intents: {
