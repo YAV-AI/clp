@@ -18,7 +18,7 @@ export * from "./proposal";
 // =========================
 // runtime
 // =========================
-
+export type { Runtime } from "./runtime";
 export { createRuntime } from "./runtime";
 
 // =========================

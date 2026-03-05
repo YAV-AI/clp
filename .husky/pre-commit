@@ -1,2 +1,4 @@
-# Run TypeScript type checking
-pnpm build
+# Run build and type check
+
+pnpm -r build
+pnpm typecheck

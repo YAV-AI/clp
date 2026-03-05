@@ -1,4 +1,5 @@
 {
+  "name": "@yav-ai/clp-example-reminder",
   "dependencies": {
     "@yav-ai/clp": "workspace:*"
   }

@@ -1,31 +1,49 @@
 {
   "name": "@yav-ai/clp",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Authority-first runtime for executing AI-governed contracts",
   "license": "MIT",
+  "sideEffects": false,
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepare": "pnpm build",
+    "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "echo \"no lint configured\"",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "cp ../../README.md ./README.md && pnpm build"
   },
   "publishConfig": {
     "access": "public"
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "keywords": [
+    "ai",
+    "contract",
+    "guard",
+    "authority",
+    "runtime",
+    "clp",
+    "agent",
+    "governance"
+  ]
 }

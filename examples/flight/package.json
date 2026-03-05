@@ -1,4 +1,5 @@
 {
+  "name": "@yav-ai/clp-example-flight",
   "dependencies": {
     "@yav-ai/clp": "workspace:*"
   }

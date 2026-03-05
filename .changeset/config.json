@@ -1,0 +1,7 @@
+{
+  "changelog": ["@changesets/changelog-github", { "repo": "yav-ai/clp" }],
+  "commit": false,
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch"
+}

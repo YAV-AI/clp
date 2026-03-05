@@ -1,27 +1,31 @@
 {
   "name": "contract-language-protocol",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "description": "Monorepo for the Contract Language Protocol (CLP) — authority-first contracts for AI-governed execution",
   "license": "MIT",
   "scripts": {
     "build": "pnpm -r build",
     "test": "pnpm -r test",
-    "dev": "pnpm -r dev",
     "lint": "pnpm -r lint",
-    "clean": "rm -rf node_modules packages/**/dist examples/**/dist",
-    "release": "pnpm -r publish --access public",
+    "typecheck": "pnpm -r exec tsc --noEmit",
+    "clean": "rm -rf packages/*/dist examples/*/dist",
+    "release": "changeset version && changesets publish",
+    "release:inspect": "echo '--- changeset status ---' && changeset status && echo '\n--- version bump preview ---' && changeset version --dry-run && echo '\n--- npm publish simulation ---' && changeset publish --dry-run --verbose && echo '\n--- tarball contents ---' && pnpm -C packages/clp pack --pack-destination /tmp >/dev/null && tar -tf /tmp/yav-ai-clp-*.tgz | sort",
     "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.3.1",
-    "@commitlint/config-conventional": "^20.3.1",
-    "@vitest/coverage-v8": "^2.1.9",
+    "@types/node": "^20.12.0",
+    "@changesets/cli": "^2.30.0",
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
+    "@vitest/coverage-v8": "^4.0.8",
     "husky": "^9.1.7",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vitest": "^2.1.0"
+    "vitest": "^4.0.18",
+    "tsup": "^8.5.1"
   },
   "engines": {
     "node": ">=18"
