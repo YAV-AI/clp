@@ -1,8 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { Engine } from "./engine";
-import { Contract, createContract } from "./contract";
-import { Intent } from "./intent";
-import { Proposal } from "./proposal";
+import { Engine } from "../engine";
+import { Contract, createContract } from "../contract";
 
 // Test contract for counter
 const createTestContract = (): Contract => {

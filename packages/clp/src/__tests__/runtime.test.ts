@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { createRuntime } from "./runtime";
-import { createContract } from "./contract";
+import { createRuntime } from "../runtime";
+import { createContract } from "../contract";
 
 describe("Runtime", () => {
   it("should create a runtime from a contract", () => {
