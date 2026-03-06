@@ -10,22 +10,26 @@
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r exec tsc --noEmit",
     "clean": "rm -rf packages/*/dist examples/*/dist",
-    "release": "changeset version && changesets publish",
-    "release:inspect": "echo '--- changeset status ---' && changeset status && echo '\n--- version bump preview ---' && changeset version --dry-run && echo '\n--- npm publish simulation ---' && changeset publish --dry-run --verbose && echo '\n--- tarball contents ---' && pnpm -C packages/clp pack --pack-destination /tmp >/dev/null && tar -tf /tmp/yav-ai-clp-*.tgz | sort",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release": "pnpm --filter @yav-ai/clp release",
+    "release:dry": "pnpm --filter @yav-ai/clp release:dry"
   },
   "devDependencies": {
-    "@types/node": "^20.12.0",
-    "@changesets/cli": "^2.30.0",
     "@commitlint/cli": "^20.4.3",
     "@commitlint/config-conventional": "^20.4.3",
+    "@semantic-release/commit-analyzer": "^12.0.0",
+    "@semantic-release/github": "^11.0.6",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^13.0.0",
+    "@types/node": "^20.12.0",
     "@vitest/coverage-v8": "^4.0.8",
     "husky": "^9.1.7",
+    "semantic-release": "^24.2.9",
     "ts-node": "^10.9.2",
+    "tsup": "^8.5.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.18",
-    "tsup": "^8.5.1"
+    "vitest": "^4.0.18"
   },
   "engines": {
     "node": ">=18"

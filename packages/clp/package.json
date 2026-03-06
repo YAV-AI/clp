@@ -28,7 +28,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "echo \"no lint configured\"",
-    "prepublishOnly": "cp ../../README.md ./README.md && pnpm build"
+    "prepublishOnly": "cp ../../README.md ./README.md && pnpm build",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run"
   },
   "publishConfig": {
     "access": "public"
