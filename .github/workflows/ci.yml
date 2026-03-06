@@ -43,6 +43,7 @@ jobs:
           files: ./packages/clp/coverage/coverage-final.json
           flags: unittests
           fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   release:
     needs: test
