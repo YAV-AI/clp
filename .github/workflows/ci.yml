@@ -40,8 +40,9 @@ jobs:
       - name: Upload coverage
         uses: codecov/codecov-action@v4
         with:
-          files: packages/**/coverage/coverage-final.json
+          files: ./packages/clp/coverage/coverage-final.json
           flags: unittests
+          fail_ci_if_error: false
 
   release:
     needs: test
@@ -67,7 +68,6 @@ jobs:
         with:
           node-version: "20"
           cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -80,9 +80,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # - name: Semantic release
       #   run: pnpm release
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
