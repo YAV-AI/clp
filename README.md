@@ -1,8 +1,8 @@
 # Contract Language Protocol (CLP)
 
 [![npm version](https://img.shields.io/npm/v/@yav-ai/clp.svg)](https://www.npmjs.com/package/@yav-ai/clp)
-[![Test Status](https://github.com/yav-ai/clp/actions/workflows/test.yml/badge.svg)](https://github.com/yav-ai/clp/actions)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/yav-ai/clp)
+[![Test Status](https://github.com/yav-ai/clp/actions/workflows/ci.yml/badge.svg)](https://github.com/yav-ai/clp/actions)
+[![codecov](https://codecov.io/github/yav-ai/clp/branch/main/graph/badge.svg?token=B0IDE2W725)](https://codecov.io/github/yav-ai/clp)
 
 The **Contract Language Protocol (CLP)** is an authority-first execution protocol for AI-assisted software systems.
 
