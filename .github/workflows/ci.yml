@@ -50,11 +50,12 @@ jobs:
 
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -66,14 +67,22 @@ jobs:
         with:
           node-version: "20"
           cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create changesets PR or publish
-        uses: changesets/action@v1
-        with:
-          publish: pnpm release
+      - name: Build
+        run: pnpm build
+
+      - name: Semantic release dry run
+        run: pnpm release:dry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # - name: Semantic release
+      #   run: pnpm release
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
