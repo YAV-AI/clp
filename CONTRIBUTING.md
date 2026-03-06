@@ -173,6 +173,6 @@ it("should work correctly");
 ## Questions?
 
 - Open a discussion: https://github.com/yav-ai/clp/discussions
-- Email: hello@yav.ai
+- Email: contact@yav.ai
 
 Thank you for helping make CLP better!
